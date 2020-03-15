@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit new post
+{% endblock %}
+
+{% block content_title %}
+    Post
+{% endblock %}
+
+{% block content %}
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <form action="{{ url_for('posts.edit_post', slug=post.slug) }}" method="POST">
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label(class='control-label') }}
+                        {{ field(class='form-control') }}
+                    </div>
+                {% endfor %}
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary">Изменить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
